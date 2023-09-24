@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/getlock_sample
+    username: user
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # https://qiita.com/oohira/items/98bd5bdfe3d6a38e87d4
+    hikari:
+      maximum-pool-size: 1
+      # We strongly recommend setting this value,
+      # and it should be several seconds shorter than any database or infrastructure imposed connection time limit.
+      # The minimum allowed value is 30000ms (30 seconds).
+      # Default: 1800000 (30 minutes)
+      # HicariCP側は30分なのに対して、mysqlのwait_timeoutのデフォ値は8時間
+#      max-lifetime: 30000
+logging:
+  level:
+    com.zaxxer.hikari: debug

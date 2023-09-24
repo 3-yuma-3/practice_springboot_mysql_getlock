@@ -1,0 +1,18 @@
+version: '3.9'
+services:
+  mysql-getlock:
+    platform: linux/amd64
+    image: mysql:8.0.33
+    container_name: mysql-getlock
+    user: mysql
+    environment:
+      - MYSQL_DATABASE=getlock_sample
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=password
+    volumes:
+      - mysql-getlock:/var/lib/mysql
+    ports:
+      - "3306:3306"
+volumes:
+  mysql-getlock:
