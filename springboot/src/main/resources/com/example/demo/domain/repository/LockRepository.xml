@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd"
+        >
+<mapper namespace="com.example.demo.domain.repository.LockRepository">
+    <select id="getLock" resultType="integer">
+        SELECT GET_LOCK(
+            #{lockName},
+            #{timeout}
+        )
+    </select>
+
+    <select id="isUsedLock" resultType="string">
+        SELECT IS_USED_LOCK(
+            #{lockName}
+        )
+    </select>
+
+    <select id="releaseLock" resultType="integer">
+        SELECT RELEASE_LOCK(
+            #{lockName}
+        )
+    </select>
+
+    <select id="getConnectionId" resultType="integer">
+        SELECT CONNECTION_ID()
+    </select>
+</mapper>
