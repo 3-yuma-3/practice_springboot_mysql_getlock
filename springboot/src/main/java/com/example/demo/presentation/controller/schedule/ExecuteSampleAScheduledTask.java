@@ -34,11 +34,14 @@ public class ExecuteSampleAScheduledTask {
         } else if (Objects.equals(getLock, 1)) {
             log.info("connectionId: " + connectionId + " . lockを取得できた");
 
-            // application.ymlでHicariCPのmax-lifetimeを30秒に指定している
-            // HicariCPのconnectionがresetされるのを待つため、40秒間sleepする
+            // HicariCPのmax-lifetimeをデフォ値の30分に戻して、
+            // mysql側のwait_timeoutを10秒に設定している
+            // mysql> set global wait_timeout=10;
+            // mysql> show global variables like 'wait_timeout';
+            // mysql側のsessionがresetされるのを待つため、20秒間sleepする
             log.info(">>>>> sleep");
             try {
-                Thread.sleep(40000);
+                Thread.sleep(20000);
             } catch (InterruptedException e) {
                 log.error("InterruptedException が発生. ", e);
             }

@@ -12,7 +12,7 @@ spring:
       # The minimum allowed value is 30000ms (30 seconds).
       # Default: 1800000 (30 minutes)
       # HicariCP側は30分なのに対して、mysqlのwait_timeoutのデフォ値は8時間
-      max-lifetime: 30000
+#      max-lifetime: 30000
 logging:
   level:
     com.zaxxer.hikari: debug
